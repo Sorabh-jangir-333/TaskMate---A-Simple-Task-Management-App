@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= filename %> - Task Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Glassmorphism Effect */
+      .glass {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+  <body class="bg-gradient-to-br from-gray-900 to-gray-800 min-h-screen flex items-center justify-center text-white">
+    <div class="w-full max-w-3xl p-6">
+      <!-- Back Button -->
+      <a href="/" class="text-blue-400 hover:text-blue-300 flex items-center space-x-2 transition">
+        🔙 <span>Go Back To Home</span>
+      </a>
+
+      <!-- Task Details -->
+      <div class="glass mt-5 p-6 border border-gray-700">
+        <h1 class="text-3xl font-bold tracking-tight"><%= filename %></h1>
+        <p class="text-lg mt-4 leading-relaxed text-gray-300"><%= filedata %></p>
+      </div>
+    </div>
+  </body>
+</html>
