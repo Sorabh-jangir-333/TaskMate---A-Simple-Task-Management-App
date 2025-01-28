@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Glassmorphism Effect */
+      .glass {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+  <body class="bg-gradient-to-br from-gray-900 to-gray-800 min-h-screen flex flex-col items-center justify-center">
+    <div class="w-full max-w-3xl px-6 py-10">
+      <!-- Task Input Section -->
+      <div class="glass w-full p-6 text-white border border-gray-700">
+        <h2 class="text-2xl font-semibold text-center">Create a Task</h2>
+        <form action="/create" method="post" class="mt-4 space-y-4">
+          <input
+            type="text"
+            placeholder="Title goes here.."
+            class="block w-full rounded-md outline-none px-5 py-3 bg-gray-900 text-white focus:ring-2 focus:ring-blue-500 transition"
+            name="title"
+          />
+          <textarea
+            placeholder="Write your task details here..."
+            class="block w-full rounded-md outline-none px-5 py-3 bg-gray-900 text-white focus:ring-2 focus:ring-blue-500 transition resize-none"
+            name="details"
+          ></textarea>
+          <button
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-md font-medium transition transform hover:scale-105">
+            Create Task
+          </button>
+        </form>
+      </div>
+
+      <!-- Task Cards Section -->
+      <div class="tasks flex flex-wrap justify-center gap-4 mt-6">
+        <% if(files.length > 0) { %> 
+          <% files.forEach(function(val) { %>
+            <div class="task min-w-72 px-5 py-6 rounded-xl bg-gray-900 border border-gray-700 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all text-white">
+              <h2 class="text-xl font-semibold tracking-tight">
+                <%= val %>
+              </h2>
+              <a href="/file/<%= val %>" class="text-blue-400 hover:text-blue-300 mt-2 inline-block transition">
+                Read More →
+              </a>
+            </div>
+          <% }) %> 
+        <% } else { %>
+          <h3 class="text-gray-400 text-center text-lg">No tasks yet</h3>
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>
